@@ -2,331 +2,40 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
+<title>Золотая Корка — пекарня</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Золотая корка — пекарня</title>
-
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#F5B942">
-
-<style>
-:root{
-  --gold:#F5B942;
-  --gold2:#FFD966;
-  --cream:#FFF9EE;
-  --brown:#6B3E26;
-}
-
-*{box-sizing:border-box}
-
-body{
-  margin:0;
-  font-family:'Segoe UI',Arial,sans-serif;
-  background:#fff;
-  color:#3b2a1a;
-  overflow-x:hidden;
-}
-
-/* ДЕКОР */
-.sun{
-  position:fixed;
-  top:-140px;
-  right:-140px;
-  width:320px;
-  height:320px;
-  background:radial-gradient(circle,var(--gold2),var(--gold));
-  border-radius:50%;
-  animation:pulse 6s infinite;
-  z-index:-2;
-}
-
-.grain{
-  position:fixed;
-  bottom:-80px;
-  left:-80px;
-  width:260px;
-  height:260px;
-  background:radial-gradient(circle,#f1d8a7 25%,transparent 70%);
-  opacity:.45;
-  animation:float 8s infinite alternate;
-  z-index:-2;
-}
-
-@keyframes pulse{
-  0%,100%{transform:scale(1)}
-  50%{transform:scale(1.12)}
-}
-@keyframes float{
-  from{transform:translateY(0)}
-  to{transform:translateY(-50px)}
-}
-
-/* HEADER */
-header{
-  background:linear-gradient(180deg,#fff,#FFF3D1);
-  text-align:center;
-  padding:50px 20px;
-  box-shadow:0 10px 30px rgba(0,0,0,.1);
-}
-
-header img{
-  width:190px;
-  animation:logoIn 1.2s ease;
-}
-
-@keyframes logoIn{
-  from{transform:scale(.3);opacity:0}
-  to{transform:scale(1);opacity:1}
-}
-
-header h1{
-  margin:15px 0 5px;
-  font-size:44px;
-  color:var(--brown);
-}
-
-header p{
-  font-size:18px;
-}
-
-.contacts a{
-  display:inline-block;
-  margin:6px;
-  padding:12px 18px;
-  border-radius:30px;
-  background:linear-gradient(90deg,var(--gold),var(--gold2));
-  color:#000;
-  text-decoration:none;
-  font-weight:600;
-}
-
-/* ОСНОВА */
-section{
-  max-width:1200px;
-  margin:auto;
-  padding:40px 20px;
-}
-
-h2{text-align:center}
-
-/* ПРОДУКТЫ */
-.products{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:25px;
-}
-
-.card{
-  background:var(--cream);
-  border-radius:22px;
-  padding:22px;
-  box-shadow:0 15px 40px rgba(0,0,0,.12);
-  transition:.4s;
-  animation:fadeUp 1s ease forwards;
-}
-
-.card:hover{
-  transform:translateY(-10px) scale(1.04);
-}
-
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(40px)}
-  to{opacity:1;transform:translateY(0)}
-}
-
-.card button{
-  background:linear-gradient(90deg,var(--gold),var(--gold2));
-  border:none;
-  padding:12px;
-  width:100%;
-  border-radius:14px;
-  font-size:16px;
-  cursor:pointer;
-  font-weight:bold;
-}
-
-/* КОРЗИНА */
-.cart{
-  margin-top:60px;
-  background:#fff;
-  border-radius:30px;
-  padding:30px;
-  box-shadow:0 25px 60px rgba(0,0,0,.15);
-}
-
-.cart ul{list-style:none;padding:0}
-.cart li{
-  display:flex;
-  justify-content:space-between;
-  padding:10px 0;
-  border-bottom:1px dashed #ddd;
-  animation:pop .3s ease;
-}
-
-@keyframes pop{
-  from{transform:scale(.8);opacity:.4}
-  to{transform:scale(1);opacity:1}
-}
-
-.pay{
-  margin-top:25px;
-  background:linear-gradient(90deg,var(--gold),var(--gold2));
-  border:none;
-  width:100%;
-  padding:18px;
-  font-size:20px;
-  border-radius:18px;
-  cursor:pointer;
-  animation:pulseBtn 2s infinite;
-}
-
-@keyframes pulseBtn{
-  0%,100%{box-shadow:0 0 0 rgba(245,185,66,.6)}
-  50%{box-shadow:0 0 30px rgba(245,185,66,.9)}
-}
-
-/* QR */
-.qr{
-  text-align:center;
-  margin-top:50px;
-}
-.qr img{
-  width:180px;
-  animation:float 5s infinite alternate;
-}
-
-/* INSTALL */
-.install{
-  margin:60px auto;
-  background:#FFF3D1;
-  border-radius:26px;
-  padding:30px;
-  max-width:800px;
-  box-shadow:0 20px 40px rgba(0,0,0,.12);
-}
-
-.install h3{text-align:center}
-.install p{text-align:center;font-size:17px}
-
-/* TOAST */
-.toast{
-  position:fixed;
-  bottom:30px;
-  right:30px;
-  background:var(--gold);
-  padding:15px 20px;
-  border-radius:12px;
-  font-weight:600;
-  box-shadow:0 10px 25px rgba(0,0,0,.2);
-  animation:toast 3s forwards;
-  z-index:999;
-}
-
-@keyframes toast{
-  0%{opacity:0;transform:translateY(20px)}
-  10%,90%{opacity:1}
-  100%{opacity:0}
-}
-
-footer{
-  text-align:center;
-  padding:30px;
-  background:#FFF3D1;
-  margin-top:60px;
-}
-
-@media(max-width:600px){
-  header h1{font-size:34px}
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="sun"></div>
-<div class="grain"></div>
+<div class="decor sun"></div>
+<div class="decor clouds"></div>
+<div class="decor grains"></div>
 
 <header>
-  <img src="logo.png" alt="Золотая корка">
-  <h1>Золотая корка</h1>
-  <p>Свежая выпечка • Грозный</p>
-
-  <div class="contacts">
-    <a href="tel:+79296365464">📞 Позвонить</a>
-    <a href="https://wa.me/79296365464">💬 WhatsApp</a>
-  </div>
+  <img src="logo.png" class="logo" onclick="toggleMenu()">
+  <h1>Золотая Корка</h1>
 </header>
 
-<section>
-<h2>Наша продукция</h2>
+<nav id="menu">
+  <a href="index.html">Главная</a>
+  <a href="products.html">Продукты</a>
+</nav>
 
-<div class="products">
-  <div class="card"><h3>Багет</h3><p>120 ₽</p><button onclick="add('Багет',120)">В корзину</button></div>
-  <div class="card"><h3>Круассан</h3><p>150 ₽</p><button onclick="add('Круассан',150)">В корзину</button></div>
-  <div class="card"><h3>Хлеб деревенский</h3><p>90 ₽</p><button onclick="add('Хлеб деревенский',90)">В корзину</button></div>
-  <div class="card"><h3>Самса</h3><p>130 ₽</p><button onclick="add('Самса',130)">В корзину</button></div>
-</div>
+<section class="cart-section">
+  <h2>🧺 Корзина</h2>
+  <ul id="cart"></ul>
+  <h3 id="total">Итого: 0 ₽</h3>
 
-<div class="cart">
-<h2>Корзина</h2>
-<ul id="cart"></ul>
-<h3 id="total">Итого: 0 ₽</h3>
-<button class="pay" onclick="pay()">💳 Оплатить</button>
-</div>
+  <button class="pay" onclick="pay()">💳 Оплатить</button>
 
-<div class="qr">
-  <p><b>Оплата по QR</b></p>
-  <img src="qr.png" alt="QR">
-</div>
-
-<div class="install">
-<h3>📲 Установить как приложение</h3>
-<p><b>Android:</b> нажмите «Установить приложение»</p>
-<p><b>iPhone:</b> Safari → Поделиться → На экран «Домой»</p>
-</div>
-
+  <div class="qr">
+    <p>Оплата по QR</p>
+    <img src="qr.png">
+  </div>
 </section>
 
-<footer>
-© 2025 Золотая корка • Грозный • +7 929 636-54-64
-</footer>
-
-<script>
-let total=0, items=[]
-
-function add(n,p){
-  const li=document.createElement('li')
-  li.innerHTML=`${n} <b>${p} ₽</b>`
-  cart.appendChild(li)
-  total+=p
-  items.push(n)
-  totalEl.innerText='Итого: '+total+' ₽'
-  toast('Добавлено: '+n)
-}
-
-function pay(){
-  if(!total){toast('Корзина пуста');return}
-  const t=`Здравствуйте!
-Заказ: ${items.join(', ')}
-Сумма: ${total} ₽
-Город: Грозный`
-  open('https://wa.me/79296365464?text='+encodeURIComponent(t),'_blank')
-}
-
-function toast(t){
-  const d=document.createElement('div')
-  d.className='toast'
-  d.innerText=t
-  document.body.appendChild(d)
-  setTimeout(()=>d.remove(),3000)
-}
-
-const cart=document.getElementById('cart')
-const totalEl=document.getElementById('total')
-
-if('serviceWorker'in navigator){
-  navigator.serviceWorker.register('service-worker.js')
-}
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>

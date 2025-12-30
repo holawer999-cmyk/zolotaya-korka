@@ -26,24 +26,24 @@ body{
 /* ===== ДЕКОР ===== */
 .sun{
   position:fixed;
-  top:-150px;
-  right:-150px;
-  width:350px;
-  height:350px;
+  top:-140px;
+  right:-140px;
+  width:320px;
+  height:320px;
   background:radial-gradient(circle,var(--gold2),var(--gold));
   border-radius:50%;
   animation:pulse 6s infinite;
   z-index:-2;
 }
 
-.bread-decor{
+.grain{
   position:fixed;
   bottom:-80px;
   left:-80px;
   width:260px;
   height:260px;
   background:radial-gradient(circle,#f1d8a7 25%,transparent 70%);
-  opacity:.4;
+  opacity:.45;
   animation:float 8s infinite alternate;
   z-index:-2;
 }
@@ -72,8 +72,8 @@ header img{
 }
 
 @keyframes logoIn{
-  from{transform:scale(.3) rotate(-10deg);opacity:0}
-  to{transform:scale(1) rotate(0);opacity:1}
+  from{transform:scale(.3);opacity:0}
+  to{transform:scale(1);opacity:1}
 }
 
 header h1{
@@ -86,16 +86,13 @@ header p{
   font-size:18px;
 }
 
-/* ===== КНОПКИ СВЯЗИ ===== */
-.contacts{
-  margin-top:20px;
-}
+/* ===== КОНТАКТЫ ===== */
 .contacts a{
   display:inline-block;
-  margin:5px;
+  margin:6px;
   padding:12px 18px;
   border-radius:30px;
-  background:var(--gold);
+  background:linear-gradient(90deg,var(--gold),var(--gold2));
   color:#000;
   text-decoration:none;
   font-weight:600;
@@ -127,7 +124,7 @@ h2{text-align:center}
 }
 
 .card:hover{
-  transform:translateY(-12px) scale(1.04);
+  transform:translateY(-10px) scale(1.04);
 }
 
 @keyframes fadeUp{
@@ -136,6 +133,7 @@ h2{text-align:center}
 }
 
 .card h3{margin-top:0}
+
 .card button{
   background:linear-gradient(90deg,var(--gold),var(--gold2));
   border:none;
@@ -157,11 +155,18 @@ h2{text-align:center}
 }
 
 .cart ul{list-style:none;padding:0}
+
 .cart li{
   display:flex;
   justify-content:space-between;
   padding:10px 0;
   border-bottom:1px dashed #ddd;
+  animation:pop .3s ease;
+}
+
+@keyframes pop{
+  from{transform:scale(.8);opacity:.4}
+  to{transform:scale(1);opacity:1}
 }
 
 .pay{
@@ -173,10 +178,10 @@ h2{text-align:center}
   font-size:20px;
   border-radius:18px;
   cursor:pointer;
-  animation:payPulse 2s infinite;
+  animation:pulseBtn 2s infinite;
 }
 
-@keyframes payPulse{
+@keyframes pulseBtn{
   0%,100%{box-shadow:0 0 0 rgba(245,185,66,.6)}
   50%{box-shadow:0 0 30px rgba(245,185,66,.9)}
 }
@@ -186,9 +191,30 @@ h2{text-align:center}
   text-align:center;
   margin-top:50px;
 }
+
 .qr img{
   width:180px;
   animation:float 5s infinite alternate;
+}
+
+/* ===== УВЕДОМЛЕНИЕ ===== */
+.toast{
+  position:fixed;
+  bottom:30px;
+  right:30px;
+  background:var(--gold);
+  padding:15px 20px;
+  border-radius:12px;
+  font-weight:600;
+  box-shadow:0 10px 25px rgba(0,0,0,.2);
+  animation:toast 3s forwards;
+  z-index:999;
+}
+
+@keyframes toast{
+  0%{opacity:0;transform:translateY(20px)}
+  10%,90%{opacity:1;transform:translateY(0)}
+  100%{opacity:0}
 }
 
 /* ===== FOOTER ===== */
@@ -209,7 +235,7 @@ footer{
 <body>
 
 <div class="sun"></div>
-<div class="bread-decor"></div>
+<div class="grain"></div>
 
 <header>
   <img src="logo.png" alt="Золотая корка">
@@ -217,9 +243,8 @@ footer{
   <p>Свежая выпечка • Тёплый хлеб • Грозный</p>
 
   <div class="contacts">
-    <a href="https://wa.me/79296365464">WhatsApp</a>
-    <a href="https://t.me/">Telegram</a>
-    <a href="tel:+79296365464">Позвонить</a>
+    <a href="tel:+79296365464">📞 Позвонить</a>
+    <a href="https://wa.me/79296365464">💬 WhatsApp</a>
   </div>
 </header>
 
@@ -229,10 +254,10 @@ footer{
 <div class="products">
   <div class="card"><h3>Багет</h3><p>120 ₽</p><button onclick="add('Багет',120)">В корзину</button></div>
   <div class="card"><h3>Круассан</h3><p>150 ₽</p><button onclick="add('Круассан',150)">В корзину</button></div>
-  <div class="card"><h3>Хлеб деревенский</h3><p>90 ₽</p><button onclick="add('Хлеб',90)">В корзину</button></div>
-  <div class="card"><h3>Булочка с корицей</h3><p>110 ₽</p><button onclick="add('Булочка',110)">В корзину</button></div>
-  <div class="card"><h3>Пирог яблочный</h3><p>220 ₽</p><button onclick="add('Пирог',220)">В корзину</button></div>
+  <div class="card"><h3>Хлеб деревенский</h3><p>90 ₽</p><button onclick="add('Хлеб деревенский',90)">В корзину</button></div>
+  <div class="card"><h3>Булочка с корицей</h3><p>110 ₽</p><button onclick="add('Булочка с корицей',110)">В корзину</button></div>
   <div class="card"><h3>Самса</h3><p>130 ₽</p><button onclick="add('Самса',130)">В корзину</button></div>
+  <div class="card"><h3>Пирог яблочный</h3><p>220 ₽</p><button onclick="add('Пирог яблочный',220)">В корзину</button></div>
 </div>
 
 <div class="cart">
@@ -250,25 +275,51 @@ footer{
 </section>
 
 <footer>
-© 2025 Золотая корка • Грозный
+© 2025 Золотая корка • Грозный • +7 929 636-54-64
 </footer>
 
 <script>
-let total=0
-function add(name,price){
-  const li=document.createElement('li')
-  li.innerHTML=`${name} <b>${price} ₽</b>`
+let total = 0
+let items = []
+
+function add(name, price){
+  const li = document.createElement('li')
+  li.innerHTML = `${name} <b>${price} ₽</b>`
   document.getElementById('cart').appendChild(li)
-  total+=price
-  document.getElementById('total').innerText='Итого: '+total+' ₽'
+
+  total += price
+  items.push(name)
+
+  document.getElementById('total').innerText = 'Итого: ' + total + ' ₽'
+  toast('Добавлено: ' + name)
 }
 
 function pay(){
-  if(total===0){
-    alert('Корзина пуста')
-  }else{
-    alert('Заказ принят! Мы свяжемся с вами 💛')
+  if(total === 0){
+    toast('Корзина пуста')
+    return
   }
+
+  const text =
+`Здравствуйте!
+Хочу заказать:
+${items.join(', ')}
+
+Итого: ${total} ₽
+Город: Грозный`
+
+  window.open(
+    'https://wa.me/79296365464?text=' + encodeURIComponent(text),
+    '_blank'
+  )
+}
+
+function toast(text){
+  const t = document.createElement('div')
+  t.className = 'toast'
+  t.innerText = text
+  document.body.appendChild(t)
+  setTimeout(()=>t.remove(),3000)
 }
 </script>
 

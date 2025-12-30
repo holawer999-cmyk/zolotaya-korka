@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Золотая корка — пекарня | Грозный</title>
+
+<style>
+:root{
+  --gold:#d4a017;
+  --dark:#0e0e0e;
+  --card:#1c1c1c;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:linear-gradient(180deg,#000,#111);
+  color:#fff;
+}
+
+/* ===== HEADER ===== */
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:rgba(0,0,0,.9);
+  padding:15px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:1000;
+}
+
+/* LOGO ANIMATION */
+.logo-wrap{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  animation:fadeDown 1.2s ease;
+}
+.logo-wrap img{
+  width:45px;
+  animation:spinGlow 3s infinite alternate;
+}
+.logo-text{
+  font-size:26px;
+  font-weight:bold;
+  color:var(--gold);
+}
+
+@keyframes fadeDown{
+  from{opacity:0; transform:translateY(-20px)}
+  to{opacity:1; transform:translateY(0)}
+}
+@keyframes spinGlow{
+  from{filter:drop-shadow(0 0 5px gold)}
+  to{filter:drop-shadow(0 0 15px gold)}
+}
+
+/* MENU */
+nav{
+  display:flex;
+  gap:20px;
+}
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:20px;
+}
+
+.burger{
+  display:none;
+  font-size:30px;
+  cursor:pointer;
+}
+
+@media(max-width:768px){
+  nav{
+    position:absolute;
+    top:70px;
+    left:0;
+    width:100%;
+    background:#000;
+    flex-direction:column;
+    display:none;
+  }
+  nav.active{display:flex}
+  nav a{padding:15px;text-align:center}
+  .burger{display:block}
+}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+}
+
+.hero h1{
+  font-size:64px;
+}
+.hero p{
+  font-size:26px;
+  color:#ddd;
+}
+
+/* SECTIONS */
+.section{
+  padding:90px 20px;
+  max-width:1200px;
+  margin:auto;
+}
+.section h2{
+  font-size:42px;
+  color:var(--gold);
+  text-align:center;
+  margin-bottom:30px;
+}
+
+/* PRODUCTS */
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:25px;
+}
+.card{
+  background:var(--card);
+  border-radius:20px;
+  padding:20px;
+  text-align:center;
+  transition:.3s;
+}
+.card:hover{transform:translateY(-6px)}
+.card h3{font-size:26px}
+.card p{font-size:20px;color:#ccc}
+.price{font-size:22px;color:var(--gold)}
+
+button{
+  background:var(--gold);
+  border:none;
+  padding:12px 25px;
+  font-size:18px;
+  border-radius:30px;
+  cursor:pointer;
+}
+
+/* CART */
+.cart{
+  background:var(--card);
+  padding:30px;
+  border-radius:20px;
+}
+.cart-item{
+  display:flex;
+  justify-content:space-between;
+  font-size:22px;
+}
+.total{
+  margin-top:15px;
+  font-size:26px;
+  color:var(--gold);
+}
+
+/* CONTACTS */
+.contacts{
+  text-align:center;
+  font-size:24px;
+}
+.contacts strong{color:var(--gold)}
+
+footer{
+  background:#000;
+  text-align:center;
+  padding:30px;
+  color:#777;
+  font-size:18px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-wrap">
+    <img src="logo.png" alt="Золотая корка">
+    <div class="logo-text">Золотая корка</div>
+  </div>
+  <div class="burger" onclick="toggleMenu()">☰</div>
+  <nav id="menu">
+    <a href="#menuu">Меню</a>
+    <a href="#cart">Корзина</a>
+    <a href="#contacts">Контакты</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Золотая корка</h1>
+  <p>Свежая выпечка с душой</p>
+</section>
+
+<section class="section" id="menuu">
+  <h2>Наша выпечка</h2>
+  <div class="products">
+    <div class="card">
+      <h3>Хлеб деревенский</h3>
+      <p>Свежий, ароматный</p>
+      <div class="price">80 ₽</div>
+      <button onclick="add('Хлеб',80)">В корзину</button>
+    </div>
+    <div class="card">
+      <h3>Булочка с маком</h3>
+      <p>Мягкая и сладкая</p>
+      <div class="price">50 ₽</div>
+      <button onclick="add('Булочка',50)">В корзину</button>
+    </div>
+    <div class="card">
+      <h3>Самса</h3>
+      <p>Сочная, горячая</p>
+      <div class="price">120 ₽</div>
+      <button onclick="add('Самса',120)">В корзину</button>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="cart">
+  <h2>Корзина</h2>
+  <div class="cart" id="cartList"></div>
+  <div class="total" id="total">Итого: 0 ₽</div>
+</section>
+
+<section class="section" id="contacts">
+  <h2>Контакты</h2>
+  <div class="contacts">
+    📍 Грозный<br><br>
+    ☎ <strong>+7 929 636-54-64</strong><br><br>
+    <img src="qr.png" width="160">
+  </div>
+</section>
+
+<footer>
+  © Золотая корка — свежая выпечка каждый день
+</footer>
+
+<script>
+let total=0;
+function add(name,price){
+  const div=document.createElement('div');
+  div.className='cart-item';
+  div.innerHTML=`${name} <span>${price} ₽</span>`;
+  document.getElementById('cartList').appendChild(div);
+  total+=price;
+  document.getElementById('total').innerText=`Итого: ${total} ₽`;
+}
+function toggleMenu(){
+  document.getElementById('menu').classList.toggle('active');
+}
+</script>
+
+</body>
+</html>

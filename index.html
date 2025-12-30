@@ -3,10 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Золотая корка — пекарня</title>
 
-<!-- PWA -->
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#F5B942">
 
@@ -71,7 +69,7 @@ header{
 }
 
 header img{
-  width:180px;
+  width:190px;
   animation:logoIn 1.2s ease;
 }
 
@@ -196,7 +194,20 @@ h2{text-align:center}
   animation:float 5s infinite alternate;
 }
 
-/* УВЕДОМЛЕНИЕ */
+/* INSTALL */
+.install{
+  margin:60px auto;
+  background:#FFF3D1;
+  border-radius:26px;
+  padding:30px;
+  max-width:800px;
+  box-shadow:0 20px 40px rgba(0,0,0,.12);
+}
+
+.install h3{text-align:center}
+.install p{text-align:center;font-size:17px}
+
+/* TOAST */
 .toast{
   position:fixed;
   bottom:30px;
@@ -267,6 +278,12 @@ footer{
   <img src="qr.png" alt="QR">
 </div>
 
+<div class="install">
+<h3>📲 Установить как приложение</h3>
+<p><b>Android:</b> нажмите «Установить приложение»</p>
+<p><b>iPhone:</b> Safari → Поделиться → На экран «Домой»</p>
+</div>
+
 </section>
 
 <footer>
@@ -274,28 +291,25 @@ footer{
 </footer>
 
 <script>
-let total=0
-let items=[]
+let total=0, items=[]
 
-function add(name,price){
+function add(n,p){
   const li=document.createElement('li')
-  li.innerHTML=`${name} <b>${price} ₽</b>`
-  document.getElementById('cart').appendChild(li)
-  total+=price
-  items.push(name)
-  document.getElementById('total').innerText='Итого: '+total+' ₽'
-  toast('Добавлено: '+name)
+  li.innerHTML=`${n} <b>${p} ₽</b>`
+  cart.appendChild(li)
+  total+=p
+  items.push(n)
+  totalEl.innerText='Итого: '+total+' ₽'
+  toast('Добавлено: '+n)
 }
 
 function pay(){
-  if(total===0){toast('Корзина пуста');return}
-  const text=`Здравствуйте!
-Хочу заказать:
-${items.join(', ')}
-
-Итого: ${total} ₽
+  if(!total){toast('Корзина пуста');return}
+  const t=`Здравствуйте!
+Заказ: ${items.join(', ')}
+Сумма: ${total} ₽
 Город: Грозный`
-  window.open('https://wa.me/79296365464?text='+encodeURIComponent(text),'_blank')
+  open('https://wa.me/79296365464?text='+encodeURIComponent(t),'_blank')
 }
 
 function toast(t){
@@ -306,7 +320,9 @@ function toast(t){
   setTimeout(()=>d.remove(),3000)
 }
 
-/* PWA */
+const cart=document.getElementById('cart')
+const totalEl=document.getElementById('total')
+
 if('serviceWorker'in navigator){
   navigator.serviceWorker.register('service-worker.js')
 }

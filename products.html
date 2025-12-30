@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Продукты — Золотая Корка</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <img src="logo.png" class="logo" onclick="location.href='index.html'">
+  <h1>Наша выпечка</h1>
+</header>
+
+<section class="products">
+
+<script>
+const products=[
+{name:"Багет",price:120,desc:"Хрустящий французский хлеб",comp:"Мука, вода, дрожжи, соль"},
+{name:"Круассан",price:150,desc:"Слоёный с маслом",comp:"Мука, масло, молоко"},
+{name:"Чиабатта",price:110,desc:"Итальянский хлеб",comp:"Мука, оливковое масло"},
+{name:"Бриошь",price:160,desc:"Сладкая булка",comp:"Яйца, масло"},
+{name:"Самса",price:130,desc:"С мясом",comp:"Говядина, лук"},
+{name:"Плюшка",price:80,desc:"Сахарная",comp:"Сахар, корица"},
+{name:"Лаваш",price:60,desc:"Тонкий хлеб",comp:"Мука, вода"},
+{name:"Фокачча",price:140,desc:"С розмарином",comp:"Мука, масло"},
+{name:"Булочка",price:70,desc:"Мягкая",comp:"Молоко"},
+{name:"Хачапури",price:180,desc:"С сыром",comp:"Сыр, тесто"},
+{name:"Ржаной хлеб",price:100,desc:"Тёмный хлеб",comp:"Ржаная мука"},
+{name:"Пирожок",price:90,desc:"С картошкой",comp:"Картофель"},
+{name:"Маффин",price:120,desc:"Шоколадный",comp:"Какао"},
+{name:"Эклер",price:150,desc:"С кремом",comp:"Сливки"},
+{name:"Булка с маком",price:85,desc:"Ароматная",comp:"Мак"},
+{name:"Бублик",price:60,desc:"Классический",comp:"Мука"},
+{name:"Кекс",price:130,desc:"Домашний",comp:"Яйца"},
+{name:"Пита",price:70,desc:"Лепешка",comp:"Мука"},
+{name:"Сдоба",price:100,desc:"Сладкая",comp:"Сахар"},
+{name:"Хлеб с семенами",price:120,desc:"Полезный",comp:"Семечки"}
+];
+
+document.write(products.map((p,i)=>`
+<div class="card">
+<h3>${p.name}</h3>
+<p>${p.desc}</p>
+<p><b>${p.price} ₽</b></p>
+<button onclick="openProduct(${i})">Подробнее</button>
+<button onclick="add('${p.name}',${p.price})">В корзину</button>
+</div>`).join(''))
+</script>
+
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>

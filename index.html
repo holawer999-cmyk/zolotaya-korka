@@ -8,6 +8,7 @@
 <style>
 :root{
   --gold:#F5B942;
+  --gold2:#FFD966;
   --cream:#FFF9EE;
   --brown:#6B3E26;
 }
@@ -22,62 +23,62 @@ body{
   overflow-x:hidden;
 }
 
-/* ====== ДЕКОР ====== */
+/* ===== ДЕКОР ===== */
 .sun{
   position:fixed;
-  top:-120px;
-  right:-120px;
-  width:300px;
-  height:300px;
-  background:radial-gradient(circle,#FFD966,#F5B942);
+  top:-150px;
+  right:-150px;
+  width:350px;
+  height:350px;
+  background:radial-gradient(circle,var(--gold2),var(--gold));
   border-radius:50%;
   animation:pulse 6s infinite;
-  z-index:-1;
+  z-index:-2;
 }
 
-.grain{
+.bread-decor{
   position:fixed;
-  bottom:-50px;
-  left:-50px;
-  width:200px;
-  height:200px;
-  background:radial-gradient(circle,#f1d8a7 20%,transparent 70%);
+  bottom:-80px;
+  left:-80px;
+  width:260px;
+  height:260px;
+  background:radial-gradient(circle,#f1d8a7 25%,transparent 70%);
   opacity:.4;
   animation:float 8s infinite alternate;
-  z-index:-1;
+  z-index:-2;
 }
 
 @keyframes pulse{
   0%,100%{transform:scale(1)}
-  50%{transform:scale(1.1)}
+  50%{transform:scale(1.12)}
 }
 
 @keyframes float{
   from{transform:translateY(0)}
-  to{transform:translateY(-40px)}
+  to{transform:translateY(-50px)}
 }
 
-/* ====== HEADER ====== */
+/* ===== HEADER ===== */
 header{
-  background:linear-gradient(180deg,#fff,#FFF4D8);
+  background:linear-gradient(180deg,#fff,#FFF3D1);
   text-align:center;
-  padding:40px 20px;
-  box-shadow:0 10px 30px rgba(0,0,0,.08);
+  padding:50px 20px;
+  box-shadow:0 10px 30px rgba(0,0,0,.1);
 }
 
 header img{
-  width:160px;
-  animation:logoPop 1.2s ease;
+  width:180px;
+  animation:logoIn 1.2s ease;
 }
 
-@keyframes logoPop{
-  0%{transform:scale(0);opacity:0}
-  100%{transform:scale(1);opacity:1}
+@keyframes logoIn{
+  from{transform:scale(.3) rotate(-10deg);opacity:0}
+  to{transform:scale(1) rotate(0);opacity:1}
 }
 
 header h1{
   margin:15px 0 5px;
-  font-size:42px;
+  font-size:44px;
   color:var(--brown);
 }
 
@@ -85,13 +86,31 @@ header p{
   font-size:18px;
 }
 
-/* ====== ПРОДУКТЫ ====== */
+/* ===== КНОПКИ СВЯЗИ ===== */
+.contacts{
+  margin-top:20px;
+}
+.contacts a{
+  display:inline-block;
+  margin:5px;
+  padding:12px 18px;
+  border-radius:30px;
+  background:var(--gold);
+  color:#000;
+  text-decoration:none;
+  font-weight:600;
+}
+
+/* ===== ОСНОВА ===== */
 section{
-  max-width:1100px;
+  max-width:1200px;
   margin:auto;
   padding:40px 20px;
 }
 
+h2{text-align:center}
+
+/* ===== ПРОДУКТЫ ===== */
 .products{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
@@ -100,15 +119,15 @@ section{
 
 .card{
   background:var(--cream);
-  border-radius:20px;
-  padding:20px;
-  box-shadow:0 15px 35px rgba(0,0,0,.1);
+  border-radius:22px;
+  padding:22px;
+  box-shadow:0 15px 40px rgba(0,0,0,.12);
   transition:.4s;
   animation:fadeUp 1s ease forwards;
 }
 
 .card:hover{
-  transform:translateY(-10px) scale(1.03);
+  transform:translateY(-12px) scale(1.04);
 }
 
 @keyframes fadeUp{
@@ -118,26 +137,24 @@ section{
 
 .card h3{margin-top:0}
 .card button{
-  background:var(--gold);
+  background:linear-gradient(90deg,var(--gold),var(--gold2));
   border:none;
   padding:12px;
   width:100%;
-  border-radius:12px;
+  border-radius:14px;
   font-size:16px;
   cursor:pointer;
   font-weight:bold;
 }
 
-/* ====== КОРЗИНА ====== */
+/* ===== КОРЗИНА ===== */
 .cart{
-  margin-top:50px;
+  margin-top:60px;
   background:#fff;
-  border-radius:25px;
+  border-radius:30px;
   padding:30px;
-  box-shadow:0 20px 50px rgba(0,0,0,.12);
+  box-shadow:0 25px 60px rgba(0,0,0,.15);
 }
-
-.cart h2{text-align:center}
 
 .cart ul{list-style:none;padding:0}
 .cart li{
@@ -149,36 +166,42 @@ section{
 
 .pay{
   margin-top:25px;
-  background:linear-gradient(90deg,#F5B942,#FFD966);
+  background:linear-gradient(90deg,var(--gold),var(--gold2));
   border:none;
   width:100%;
   padding:18px;
   font-size:20px;
-  border-radius:15px;
+  border-radius:18px;
   cursor:pointer;
   animation:payPulse 2s infinite;
 }
 
 @keyframes payPulse{
-  0%,100%{box-shadow:0 0 0 rgba(245,185,66,.7)}
-  50%{box-shadow:0 0 25px rgba(245,185,66,.9)}
+  0%,100%{box-shadow:0 0 0 rgba(245,185,66,.6)}
+  50%{box-shadow:0 0 30px rgba(245,185,66,.9)}
 }
 
-/* ====== QR ====== */
+/* ===== QR ===== */
 .qr{
   text-align:center;
-  margin-top:40px;
+  margin-top:50px;
 }
 .qr img{
-  width:160px;
+  width:180px;
   animation:float 5s infinite alternate;
 }
 
+/* ===== FOOTER ===== */
 footer{
   text-align:center;
   padding:30px;
-  background:#FFF4D8;
-  margin-top:50px;
+  background:#FFF3D1;
+  margin-top:60px;
+}
+
+/* ===== МОБИЛКА ===== */
+@media(max-width:600px){
+  header h1{font-size:34px}
 }
 </style>
 </head>
@@ -186,16 +209,22 @@ footer{
 <body>
 
 <div class="sun"></div>
-<div class="grain"></div>
+<div class="bread-decor"></div>
 
 <header>
   <img src="logo.png" alt="Золотая корка">
   <h1>Золотая корка</h1>
-  <p>Тёплый хлеб • Свежая выпечка • Любовь</p>
+  <p>Свежая выпечка • Тёплый хлеб • Грозный</p>
+
+  <div class="contacts">
+    <a href="https://wa.me/79296365464">WhatsApp</a>
+    <a href="https://t.me/">Telegram</a>
+    <a href="tel:+79296365464">Позвонить</a>
+  </div>
 </header>
 
 <section>
-<h2>Наша выпечка</h2>
+<h2>Наша продукция</h2>
 
 <div class="products">
   <div class="card"><h3>Багет</h3><p>120 ₽</p><button onclick="add('Багет',120)">В корзину</button></div>
@@ -203,24 +232,25 @@ footer{
   <div class="card"><h3>Хлеб деревенский</h3><p>90 ₽</p><button onclick="add('Хлеб',90)">В корзину</button></div>
   <div class="card"><h3>Булочка с корицей</h3><p>110 ₽</p><button onclick="add('Булочка',110)">В корзину</button></div>
   <div class="card"><h3>Пирог яблочный</h3><p>220 ₽</p><button onclick="add('Пирог',220)">В корзину</button></div>
+  <div class="card"><h3>Самса</h3><p>130 ₽</p><button onclick="add('Самса',130)">В корзину</button></div>
 </div>
 
 <div class="cart">
 <h2>Корзина</h2>
 <ul id="cart"></ul>
 <h3 id="total">Итого: 0 ₽</h3>
-<button class="pay">💳 Оплатить</button>
+<button class="pay" onclick="pay()">💳 Оплатить</button>
 </div>
 
 <div class="qr">
-  <p>Оплата по QR</p>
+  <p><b>Оплата по QR</b></p>
   <img src="qr.png" alt="QR">
 </div>
 
 </section>
 
 <footer>
-© 2025 Золотая корка
+© 2025 Золотая корка • Грозный
 </footer>
 
 <script>
@@ -231,6 +261,14 @@ function add(name,price){
   document.getElementById('cart').appendChild(li)
   total+=price
   document.getElementById('total').innerText='Итого: '+total+' ₽'
+}
+
+function pay(){
+  if(total===0){
+    alert('Корзина пуста')
+  }else{
+    alert('Заказ принят! Мы свяжемся с вами 💛')
+  }
 }
 </script>
 

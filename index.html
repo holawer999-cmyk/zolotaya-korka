@@ -3,183 +3,165 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Золотая корка — пекарня | Грозный</title>
+<title>Золотая корка — пекарня</title>
 
 <style>
 :root{
-  --gold:#d4a017;
-  --dark:#0e0e0e;
-  --card:#1c1c1c;
+  --gold:#E3B23C;
+  --cream:#FFF6E5;
+  --brown:#6B3E26;
 }
 
 *{box-sizing:border-box}
+
 body{
   margin:0;
-  font-family:Arial, sans-serif;
-  background:linear-gradient(180deg,#000,#111);
-  color:#fff;
+  font-family:"Segoe UI", Arial, sans-serif;
+  background:linear-gradient(180deg,#fff,#FFF6E5);
+  color:#3b2a1a;
 }
 
 /* ===== HEADER ===== */
 header{
-  position:fixed;
-  top:0;
-  width:100%;
-  background:rgba(0,0,0,.9);
-  padding:15px 20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  z-index:1000;
+  background:linear-gradient(90deg,#fff,#FFE9B5);
+  padding:20px;
+  text-align:center;
+  box-shadow:0 4px 20px rgba(0,0,0,.1);
 }
 
-/* LOGO ANIMATION */
-.logo-wrap{
+.logo{
   display:flex;
+  flex-direction:column;
   align-items:center;
-  gap:10px;
-  animation:fadeDown 1.2s ease;
-}
-.logo-wrap img{
-  width:45px;
-  animation:spinGlow 3s infinite alternate;
-}
-.logo-text{
-  font-size:26px;
-  font-weight:bold;
-  color:var(--gold);
+  animation:fadeIn 1.2s ease;
 }
 
-@keyframes fadeDown{
+.logo img{
+  width:120px;
+  margin-bottom:10px;
+  filter:drop-shadow(0 0 20px rgba(227,178,60,.7));
+}
+
+.logo h1{
+  font-size:48px;
+  margin:0;
+  color:var(--brown);
+}
+
+.logo p{
+  font-size:20px;
+  color:#7a5a3a;
+}
+
+@keyframes fadeIn{
   from{opacity:0; transform:translateY(-20px)}
   to{opacity:1; transform:translateY(0)}
 }
-@keyframes spinGlow{
-  from{filter:drop-shadow(0 0 5px gold)}
-  to{filter:drop-shadow(0 0 15px gold)}
-}
 
-/* MENU */
-nav{
-  display:flex;
-  gap:20px;
-}
-nav a{
-  color:#fff;
-  text-decoration:none;
-  font-size:20px;
-}
-
-.burger{
-  display:none;
-  font-size:30px;
-  cursor:pointer;
-}
-
-@media(max-width:768px){
-  nav{
-    position:absolute;
-    top:70px;
-    left:0;
-    width:100%;
-    background:#000;
-    flex-direction:column;
-    display:none;
-  }
-  nav.active{display:flex}
-  nav a{padding:15px;text-align:center}
-  .burger{display:block}
-}
-
-/* HERO */
-.hero{
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:20px;
-}
-
-.hero h1{
-  font-size:64px;
-}
-.hero p{
-  font-size:26px;
-  color:#ddd;
-}
-
-/* SECTIONS */
+/* ===== SECTIONS ===== */
 .section{
-  padding:90px 20px;
   max-width:1200px;
   margin:auto;
-}
-.section h2{
-  font-size:42px;
-  color:var(--gold);
-  text-align:center;
-  margin-bottom:30px;
+  padding:60px 20px;
 }
 
-/* PRODUCTS */
+.section h2{
+  text-align:center;
+  font-size:38px;
+  color:var(--brown);
+  margin-bottom:40px;
+}
+
+/* ===== PRODUCTS ===== */
 .products{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:25px;
 }
+
 .card{
-  background:var(--card);
-  border-radius:20px;
-  padding:20px;
+  background:#fff;
+  border-radius:25px;
+  padding:25px;
   text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,.1);
   transition:.3s;
 }
-.card:hover{transform:translateY(-6px)}
-.card h3{font-size:26px}
-.card p{font-size:20px;color:#ccc}
-.price{font-size:22px;color:var(--gold)}
+
+.card:hover{
+  transform:translateY(-6px);
+}
+
+.card h3{
+  font-size:24px;
+  margin-bottom:8px;
+}
+
+.card p{
+  color:#777;
+}
+
+.price{
+  font-size:22px;
+  color:var(--gold);
+  margin:10px 0;
+}
 
 button{
-  background:var(--gold);
+  background:linear-gradient(90deg,#F5C542,#E3A617);
   border:none;
   padding:12px 25px;
   font-size:18px;
   border-radius:30px;
   cursor:pointer;
+  color:#3b2a1a;
 }
 
-/* CART */
+button:hover{opacity:.9}
+
+/* ===== CART ===== */
 .cart{
-  background:var(--card);
+  background:#fff;
+  border-radius:25px;
   padding:30px;
-  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,.1);
 }
+
 .cart-item{
   display:flex;
   justify-content:space-between;
-  font-size:22px;
-}
-.total{
-  margin-top:15px;
-  font-size:26px;
-  color:var(--gold);
+  font-size:20px;
+  margin-bottom:10px;
 }
 
-/* CONTACTS */
+.total{
+  font-size:26px;
+  color:var(--brown);
+  margin-top:20px;
+}
+
+/* ===== CONTACTS ===== */
 .contacts{
   text-align:center;
-  font-size:24px;
+  font-size:22px;
 }
-.contacts strong{color:var(--gold)}
 
+.qr{
+  margin-top:20px;
+}
+
+.pay{
+  margin-top:20px;
+  font-size:22px;
+}
+
+/* ===== FOOTER ===== */
 footer{
-  background:#000;
+  background:#FFE9B5;
   text-align:center;
-  padding:30px;
-  color:#777;
+  padding:25px;
   font-size:18px;
+  color:#5a3b1e;
 }
 </style>
 </head>
@@ -187,78 +169,59 @@ footer{
 <body>
 
 <header>
-  <div class="logo-wrap">
+  <div class="logo">
     <img src="logo.png" alt="Золотая корка">
-    <div class="logo-text">Золотая корка</div>
+    <h1>Золотая корка</h1>
+    <p>Свежая выпечка с теплом и солнцем</p>
   </div>
-  <div class="burger" onclick="toggleMenu()">☰</div>
-  <nav id="menu">
-    <a href="#menuu">Меню</a>
-    <a href="#cart">Корзина</a>
-    <a href="#contacts">Контакты</a>
-  </nav>
 </header>
 
-<section class="hero">
-  <h1>Золотая корка</h1>
-  <p>Свежая выпечка с душой</p>
-</section>
-
-<section class="section" id="menuu">
+<section class="section">
   <h2>Наша выпечка</h2>
   <div class="products">
-    <div class="card">
-      <h3>Хлеб деревенский</h3>
-      <p>Свежий, ароматный</p>
-      <div class="price">80 ₽</div>
-      <button onclick="add('Хлеб',80)">В корзину</button>
-    </div>
-    <div class="card">
-      <h3>Булочка с маком</h3>
-      <p>Мягкая и сладкая</p>
-      <div class="price">50 ₽</div>
-      <button onclick="add('Булочка',50)">В корзину</button>
-    </div>
-    <div class="card">
-      <h3>Самса</h3>
-      <p>Сочная, горячая</p>
-      <div class="price">120 ₽</div>
-      <button onclick="add('Самса',120)">В корзину</button>
-    </div>
+    <div class="card"><h3>Хлеб деревенский</h3><p>Ароматный</p><div class="price">80 ₽</div><button onclick="add('Хлеб',80)">В корзину</button></div>
+    <div class="card"><h3>Булочка с корицей</h3><p>Сладкая</p><div class="price">70 ₽</div><button onclick="add('Булочка',70)">В корзину</button></div>
+    <div class="card"><h3>Круассан</h3><p>Нежный</p><div class="price">120 ₽</div><button onclick="add('Круассан',120)">В корзину</button></div>
+    <div class="card"><h3>Самса</h3><p>Сочная</p><div class="price">120 ₽</div><button onclick="add('Самса',120)">В корзину</button></div>
+    <div class="card"><h3>Пирог яблочный</h3><p>Домашний</p><div class="price">150 ₽</div><button onclick="add('Пирог',150)">В корзину</button></div>
+    <div class="card"><h3>Багет</h3><p>Хрустящий</p><div class="price">90 ₽</div><button onclick="add('Багет',90)">В корзину</button></div>
   </div>
 </section>
 
-<section class="section" id="cart">
+<section class="section">
   <h2>Корзина</h2>
-  <div class="cart" id="cartList"></div>
+  <div class="cart" id="cart"></div>
   <div class="total" id="total">Итого: 0 ₽</div>
+  <div class="pay">
+    <button onclick="alert('Оплата будет подключена')">Оплатить</button>
+  </div>
 </section>
 
-<section class="section" id="contacts">
+<section class="section">
   <h2>Контакты</h2>
   <div class="contacts">
     📍 Грозный<br><br>
-    ☎ <strong>+7 929 636-54-64</strong><br><br>
-    <img src="qr.png" width="160">
+    ☎ <strong>+7 929 636-54-64</strong>
+    <div class="qr">
+      <p>Сканируйте для перехода на сайт</p>
+      <img src="qr.png" width="160">
+    </div>
   </div>
 </section>
 
 <footer>
-  © Золотая корка — свежая выпечка каждый день
+  © Золотая корка — уютная пекарня
 </footer>
 
 <script>
-let total=0;
+let sum=0;
 function add(name,price){
-  const div=document.createElement('div');
-  div.className='cart-item';
-  div.innerHTML=`${name} <span>${price} ₽</span>`;
-  document.getElementById('cartList').appendChild(div);
-  total+=price;
-  document.getElementById('total').innerText=`Итого: ${total} ₽`;
-}
-function toggleMenu(){
-  document.getElementById('menu').classList.toggle('active');
+  const div=document.createElement("div");
+  div.className="cart-item";
+  div.innerHTML=`${name}<span>${price} ₽</span>`;
+  document.getElementById("cart").appendChild(div);
+  sum+=price;
+  document.getElementById("total").innerText=`Итого: ${sum} ₽`;
 }
 </script>
 

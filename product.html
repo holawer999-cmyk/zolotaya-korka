@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Продукт</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <img src="logo.png" class="logo" onclick="location.href='products.html'">
+</header>
+
+<section id="product"></section>
+
+<script>
+const p=JSON.parse(localStorage.product)
+document.getElementById('product').innerHTML=`
+<h2>${p.name}</h2>
+<p>${p.desc}</p>
+<p><b>Состав:</b> ${p.comp}</p>
+<p><b>${p.price} ₽</b></p>
+<button onclick="add('${p.name}',${p.price})">В корзину</button>
+`
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>
